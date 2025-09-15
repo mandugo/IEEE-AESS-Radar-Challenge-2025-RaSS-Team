@@ -2,18 +2,7 @@
 **Interactive MATLAB GUI for radar replay, tracking & micro‑Doppler analysis**
 
 > **Author:** RaSS Team  
-> **Date:** 2025‑09‑15  
-
----
-
-## 📚 Table of Contents
-1. [Overview](#overview)  
-3. [Prerequisites](#prerequisites)  
-4. [Installation & Setup](#installation--setup)  
-5. [Usage](#usage)  
-6. [Controls & Parameters](#controls-parameters)  
-7. [Dependencies](#dependencies) 
-10. [License](#license)
+> **Date:** 2025‑09‑15
 
 ---
 
