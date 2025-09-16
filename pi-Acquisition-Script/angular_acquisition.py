@@ -5,11 +5,16 @@ import matplotlib.pyplot as plt
 import zmq
 from matplotlib.animation import FuncAnimation
 
+"""
+angular_acquisition.py
+----------------------
+Performs an azimuth scan with PlutoSDR + CN0566 by steering the
+8-element array across predefined angles. Streams a full data cube
+(angle × samples × channels) via ZeroMQ (`tcp://*:5555`).
 
-'''This script uses the new Pluto TDD engine
-   As of March 2024, this is in the main branch of https://github.com/analogdevicesinc/pyadi-iio
-   This script only works with Pluto rev 0.39 (or later)
-'''
+Output: byte stream of complex64 array, shape [numAngles, samples, 2].
+"""
+
 import adi
 print(adi.__version__)
 
@@ -231,4 +236,5 @@ while True:
         azimuth_data_cube[angle_index, :, :] = azScan
 
     # After iterating through all azimuth angles, send the entire azimuth_data_cube
+
     push.send(azimuth_data_cube.tobytes())
