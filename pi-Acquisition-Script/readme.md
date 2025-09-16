@@ -1,24 +1,31 @@
-# Data Acquisition Scripts
+# Acquisition Scripts
 
-This folder contains Python utilities for capturing and streaming radar data to the main GUI.
+This folder contains Python utilities that work together to acquire, stream and visualize radar data.  
+The workflow is split between the **embedded platform** (Raspberry Pi + PlutoSDR + CN0566) and the **host PC**.
 
 ## Scripts
 
-- **raw_acquisition.py**  
+- **raw_acquisition.py** *(run on Raspberry Pi)*  
   Streams raw IQ chirp bursts from PlutoSDR + CN0566 over a ZeroMQ socket.  
-  Useful for real-time capture when no angle scan is required.
+  Used for continuous real-time capture without angular scanning.
 
-- **angular_acquisition.py**  
-  Performs an azimuth scan across a set of steering angles by re-phasing the 8-element array.  
+- **angular_acquisition.py** *(run on Raspberry Pi)*  
+  Performs an azimuth scan by electronically steering the 8-element array.  
   Produces a 3-D data cube (*angle × samples × channels*) and streams it via ZeroMQ.
 
-## Output Interface
+- **radar_gui.py** *(run on host PC)*  
+  Connects to the ZeroMQ stream, computes range–Doppler and angle maps,  
+  and maintains real-time target tracks. Includes acquisition controls  
+  and the option to save data locally (`.npy`).
 
-Both scripts publish data on a **ZeroMQ PUSH socket** (`tcp://*:5555`).  
-A client can subscribe with a matching **PULL** socket and parse the incoming `complex64` arrays.
+## Communication
+
+All acquisition scripts publish data through a **ZeroMQ PUSH socket** (`tcp://*:5555`).  
+The GUI (`radar_gui.py`) subscribes as a **PULL** client, parses the incoming `complex64` arrays,  
+and updates its visualizations accordingly.
 
 ## Data Shapes
 
 - **Raw acquisition** → `[2, total_samples]`  
 - **Angular acquisition** → `[numAngles, samples, 2]`  
-
+- **GUI** expects one of the above and builds range–Doppler/angle views in real time.
