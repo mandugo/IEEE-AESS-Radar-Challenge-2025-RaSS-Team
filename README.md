@@ -15,7 +15,7 @@
 | **Micro‑Doppler** | Generates a time‑frequency micro‑doppler profile for the strongest target in each frame. |
 | **Target Tracking** | Maintains tracks across frames using spatial & temporal thresholds. |
 | **Video Sync** | Loads an external video file (mp4/avi/mov) and syncs it to the radar timeline with adjustable speed / offset. |
-| **Beamforming Nulling** | User‑configurable null angle – useful for sidelobe suppression or look‑away direction. |
+| **Nulling** | User‑configurable null angle – useful for sidelobe suppression or look‑away direction. |
 
 The GUI emulates a 2×3 layout:  
 - **RD** (Range‑Doppler) & **Video** (spanning two panels)  
