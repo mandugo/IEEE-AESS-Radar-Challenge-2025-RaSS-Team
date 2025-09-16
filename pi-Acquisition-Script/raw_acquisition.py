@@ -5,11 +5,15 @@ import matplotlib.pyplot as plt
 import zmq
 from matplotlib.animation import FuncAnimation
 
+"""
+raw_acquisition.py
+------------------
+Acquires continuous raw IQ chirp bursts from PlutoSDR + CN0566
+and streams them via a ZeroMQ PUSH socket (`tcp://*:5555`).
 
-'''This script uses the new Pluto TDD engine
-   As of March 2024, this is in the main branch of https://github.com/analogdevicesinc/pyadi-iio
-   This script only works with Pluto rev 0.39 (or later)
-'''
+Output: byte stream of complex64 IQ samples, shape [2, total_samples].
+"""
+
 import adi
 print(adi.__version__)
 
@@ -222,4 +226,5 @@ while True:
     buf  = np.ascontiguousarray(data, dtype=np.complex64).tobytes()
     push.send(buf)
     # 3) Send raw IQ bytes directly
+
     #push.send(data.tobytes())
