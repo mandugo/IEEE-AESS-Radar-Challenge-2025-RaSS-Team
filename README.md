@@ -37,11 +37,11 @@ No external packages or toolboxes are required beyond the default MATLAB install
 ## 🚀 Installation & Setup
 
 ```bash
-git clone https://github.com/yourname/RadarReplayGUI.git
-cd RadarReplayGUI
+git clone https://github.com/mandugo/IEEE-AESS-Radar-Challenge-2025-RaSS-Team/
+cd IEEE-AESS-Radar-Challenge-2025-RaSS-Team
 ```
 
-1. **Add helper functions** – The GUI relies on a handful of helper scripts located in `functions/`.  
+1. **Add helper functions** – The MATLAB GUI relies on a handful of helper scripts located in `functions/`.  
    ```matlab
    addpath(fullfile(pwd,'functions'));
    ```
