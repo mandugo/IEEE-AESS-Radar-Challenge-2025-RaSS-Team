@@ -1,24 +1,13 @@
-# Table of Contents
+# Available Functions
 
-- [extract_targets](#extract_targets)
-  - [Inputs](#inputs)
-  - [Output](#output)
-  - [Processing Steps](#processing-steps)
-  - [Summary](#summary)
-
-- [update_tracks](#update_tracks)
-  - [Inputs](#inputs-1)
-  - [Mechanism](#mechanism)
-  - [Summary](#summary-1)
-
+- [extract_targets](#extract_targets): identifies and extracts **radar targets** from a detection map. It performs **detection, angle estimation (DOA), and SNR validation** to return the most relevant targets.
+- [update_tracks](#update_tracks): maintains and updates a set of **object tracks** based on new incoming points. It decides whether a new point belongs to an existing track or if it should start a new one.  
 ---
 
 # `extract_targets`
 
 The `extract_targets` function identifies and extracts **radar targets** from a detection map.  
 It performs **peak detection, angle estimation (DOA), and SNR validation** to return the most relevant targets.
-
----
 
 ## Inputs
 - **detection_map**: 2D matrix where nonzero values indicate potential detections.  
@@ -28,16 +17,12 @@ It performs **peak detection, angle estimation (DOA), and SNR validation** to re
 - **max_targets**: Maximum number of targets to extract.  
 - **area_min**: Minimum region size (to filter out spurious small detections).  
 
----
-
 ## Output
 - **targets**: A matrix with rows of the form: [angle_deg, range_idx, doppler_idx, peak_val]
 - **angle_deg**: Estimated angle of arrival (in degrees).  
 - **range_idx**: Index in the range dimension.  
 - **doppler_idx**: Index in the Doppler dimension.  
 - **peak_val**: Detection strength (magnitude).  
-
----
 
 ## Processing Steps
 
@@ -68,8 +53,6 @@ It performs **peak detection, angle estimation (DOA), and SNR validation** to re
 7. **Repeat**  
  - Continue until `max_targets` are extracted or no peaks remain.  
 
----
-
 ## Summary
 - The function extracts **up to `max_targets` detections** from the radar map.  
 - Each detection is validated for **region size** and **SNR**.  
@@ -83,16 +66,12 @@ It performs **peak detection, angle estimation (DOA), and SNR validation** to re
 The `update_tracks` function maintains and updates a set of **object tracks** based on new incoming points.  
 It decides whether a new point belongs to an existing track or if it should start a new one.  
 
----
-
 ## Inputs
 - **tracks**: A cell array of tracks, where each track is a matrix of points (rows = time steps, columns = coordinates + time).  
 - **new_point**: The new observation (e.g., `[x, y, t]`) to be assigned to a track.  
 - **spatial_thresh**: Maximum spatial distance allowed to associate `new_point` with an existing track.  
 - **time_thresh**: Maximum temporal distance allowed to associate `new_point` with an existing track.  
 - **max_history**: Maximum number of points to keep per track (older points are removed).  
-
----
 
 ## Mechanism
 
@@ -113,8 +92,6 @@ It decides whether a new point belongs to an existing track or if it should star
      - If the track length exceeds `max_history`, remove the oldest point (FIFO).  
    - If no suitable track is found:
      - Start a **new track** containing only `new_point`.  
-
----
 
 ## Summary
 - **Associates** the new point with the nearest valid track (spatially and temporally).  
