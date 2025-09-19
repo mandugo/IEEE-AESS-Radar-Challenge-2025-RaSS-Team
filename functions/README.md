@@ -118,8 +118,7 @@ It operates independently on two radar channels and outputs clutter-suppressed s
 
 2. **Method Selection**
    - **MTI (`'mti'`)**  
-     - Computes the temporal difference between consecutive chirps.  
-     - Prepends a row of zeros to maintain dimensions.  
+     - Computes the temporal difference between consecutive chirps. 
      - Removes stationary clutter, emphasizes moving targets.  
 
    - **Average Subtraction (`'average'`)**  
