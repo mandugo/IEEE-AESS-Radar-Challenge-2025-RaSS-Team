@@ -5,8 +5,8 @@
 > **Date:** 2025‑09‑15
 
 <div align="center">
-  
-| ![](https://github.com/mandugo/Multidimensional-Radar-Imaging/blob/main/2dhist.png?raw=true) |
+
+| ![](https://github.com/mandugo/IEEE-AESS-Radar-Challenge-2025-RaSS-Team/gui.png?raw=true) |
 |:-------------------------:|
 |**Figure 1:** Example from **[3]**: Joint histograms evaluated between identical MR images of the head. The left panel is generated from the images when aligned, the right panel when translated by 2 mm.|
 
