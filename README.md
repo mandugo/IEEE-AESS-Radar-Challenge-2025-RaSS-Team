@@ -6,17 +6,17 @@
 
 ---
 
-## 📖 Overview
+## Overview
 The `RadarReplayGUI` function implements an interactive MATLAB GUI for replaying and analyzing radar data with optional video synchronization. It provides visualization, target tracking, and micro-Doppler analysis in a multi-panel layout.
 
 
 | Feature | Description |
 |---------|-------------|
-| **Range–Doppler & Beamforming** | Computes 2‑channel range‑doppler maps with optional clutter removal (MTI) and CFAR detection. |
-| **Micro‑Doppler** | Generates a time‑frequency micro‑doppler profile for the strongest target in each frame. |
+| **Range–Doppler** | Computes 2‑channel range‑doppler maps with optional clutter removal (MTI) and CFAR detection. |
+| **Micro‑Doppler** | Generates a time‑frequency micro‑doppler profile. |
 | **Target Tracking** | Maintains tracks across frames using spatial & temporal thresholds. |
 | **Video Sync** | Loads an external video file (mp4/avi/mov) and syncs it to the radar timeline with adjustable speed / offset. |
-| **Nulling** | User‑configurable null angle – useful for sidelobe suppression or look‑away direction. |
+| **Nulling** | User‑configurable null angle – useful to suppress undesidered target. |
 
 The GUI emulates a 2×3 layout:  
 - **RD** (Range‑Doppler) & **Video** (spanning two panels)  
@@ -24,7 +24,7 @@ The GUI emulates a 2×3 layout:
 
 ---
 
-## 🛠 Prerequisites
+## Prerequisites
 | Item | Minimum Version |
 |------|----------------|
 | MATLAB® | R2020a or newer (works up to 2024b) |
@@ -35,7 +35,7 @@ No external packages or toolboxes are required beyond the default MATLAB install
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ```bash
 git clone https://github.com/mandugo/IEEE-AESS-Radar-Challenge-2025-RaSS-Team/
@@ -56,7 +56,7 @@ The script will automatically create the main figure, build all UI components an
 
 ---
 
-## 🎬 Usage
+## Usage
 
 1. **Load radar data**  
    - Click **“Load…”** under *FILES → Radar MAT*  
@@ -66,7 +66,7 @@ The script will automatically create the main figure, build all UI components an
 2. **Load video (optional)**  
    - Click **“Load…”** under *VIDEOS*. Supported formats: `mp4`, `avi`, `mov`.  
 
-3. **Playback controls** –  
+3. **Playback controls** 
    | Button | Action |
    |--------|--------|
    | **Play/Pause** | Toggle playback. When playing, frames advance automatically at ~30 fps (timer period 0.033 s). |
@@ -74,13 +74,8 @@ The script will automatically create the main figure, build all UI components an
    | **Stop** | Reset to the first frame and clear tracks. |
    | **Loop** | Enable/disable looping when reaching the last frame. |
 
-4. **Adjust parameters** –  
-   - Range max, CFAR guard/training cells, null angle, video speed / offset are all editable via their respective edit fields or checkboxes.  
-
-5. **Visual inspection** –  
-   - The *RD* panel shows range‑doppler power (log scale) with CFAR detections highlighted.  
-   - The *Micro‑Doppler* panel shows the instantaneous velocity profile of the strongest target.  
-   - The *Polar* panel displays a polar plot of range–velocity points with tracks overlaid.
+4. **Adjust parameters**  
+   - Range max, CFAR guard/training cells, null angle, video speed / offset are all editable via their respective edit fields or checkboxes.
 
 ---
 
@@ -97,7 +92,7 @@ The script will automatically create the main figure, build all UI components an
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 All helper functions live in the `functions/` folder:
 
