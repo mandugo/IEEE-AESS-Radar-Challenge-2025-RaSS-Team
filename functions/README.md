@@ -1,3 +1,18 @@
+# Table of Contents
+
+- [extract_targets](#extract_targets)
+  - [Inputs](#inputs)
+  - [Output](#output)
+  - [Processing Steps](#processing-steps)
+  - [Summary](#summary)
+
+- [update_tracks](#update_tracks)
+  - [Inputs](#inputs-1)
+  - [Mechanism](#mechanism)
+  - [Summary](#summary-1)
+
+---
+
 # `extract_targets`
 
 The `extract_targets` function identifies and extracts **radar targets** from a detection map.  
