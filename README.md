@@ -6,9 +6,9 @@
 
 <div align="center">
 
-| ![](https://github.com/mandugo/IEEE-AESS-Radar-Challenge-2025-RaSS-Team/gui.png?raw=true) |
+| ![](https://github.com/mandugo/IEEE-AESS-Radar-Challenge-2025-RaSS-Team/blob/main/gui.png) |
 |:-------------------------:|
-|**Figure 1:** Example from **[3]**: Joint histograms evaluated between identical MR images of the head. The left panel is generated from the images when aligned, the right panel when translated by 2 mm.|
+|**Figure 1:** MATLAB Radar GUI|
 
 </div>
 
