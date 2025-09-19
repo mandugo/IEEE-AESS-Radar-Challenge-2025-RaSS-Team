@@ -1,7 +1,8 @@
 # Available Functions
 
 - [extract_targets](#extract_targets): identifies and extracts **radar targets** from a detection map. It performs **detection, angle estimation (DOA), and SNR validation** to return the most relevant targets.
-- [update_tracks](#update_tracks): maintains and updates a set of **object tracks** based on new incoming points. It decides whether a new point belongs to an existing track or if it should start a new one.  
+- [update_tracks](#update_tracks): maintains and updates a set of **object tracks** based on new incoming points. It decides whether a new point belongs to an existing track or if it should start a new one.
+- [clutterRemoval](#clutterRemoval): reduces **static clutter** in radar channel data using either **MTI (Moving Target Indicator)** or **average subtraction**.  It operates independently on two radar channels and outputs clutter-suppressed signals.
 ---
 
 # `extract_targets`
@@ -97,5 +98,52 @@ It decides whether a new point belongs to an existing track or if it should star
 - **Associates** the new point with the nearest valid track (spatially and temporally).  
 - **Starts a new track** if no match is found.  
 - **Limits track length** by keeping only the most recent `max_history` points.  
+
+---
+
+# `clutterRemoval`
+
+The `clutterRemoval` function reduces **static clutter** in radar channel data using either **MTI (Moving Target Indicator)** or **average subtraction**.  
+It operates independently on two radar channels and outputs clutter-suppressed signals.
+
+
+## Inputs
+- **ch1**: `[N × M]` matrix, channel 1 radar data (`N` chirps × `M` range bins).  
+- **ch2**: `[N × M]` matrix, channel 2 radar data (same size as `ch1`).  
+- **type**: String specifying clutter removal strategy:  
+  - `'mti'` → First-order MTI via temporal differencing.  
+  - `'average'` → Subtracts mean clutter estimate from initial pulses.  
+- **N** (optional): Number of initial pulses used for averaging (default = all available chirps).  
+
+
+## Outputs
+- **ch1_clean**: Clutter-suppressed version of channel 1 data.  
+- **ch2_clean**: Clutter-suppressed version of channel 2 data.
+
+## Processing Steps
+
+1. **Input Validation**
+   - Ensures both channels are 2D matrices.  
+   - Confirms they have the same size.  
+   - Clips `N` to the number of available chirps if necessary.  
+
+2. **Method Selection**
+   - **MTI (`'mti'`)**  
+     - Computes the temporal difference between consecutive chirps.  
+     - Prepends a row of zeros to maintain dimensions.  
+     - Removes stationary clutter, emphasizes moving targets.  
+
+   - **Average Subtraction (`'average'`)**  
+     - Computes the mean clutter across the first `N` chirps.  
+     - Subtracts this mean profile from every chirp.  
+     - Effective against static reflectors (e.g., walls, ground).  
+
+3. **Error Handling**
+   - Throws an error if `type` is not `'mti'` or `'average'`.  
+
+## Summary
+- Removes stationary clutter using either **MTI differencing** or **mean subtraction**.  
+- Preserves moving target returns while suppressing static background.  
+- Works on both radar channels independently but consistently.  
 
 ---
