@@ -113,6 +113,40 @@ All helper functions live in the `functions/` folder:
 
 ---
 
+## Processing Workflow
+1. **Initialization**
+   - Defines radar parameters (chirps, bandwidth, frequency, etc.).
+   - Computes derived quantities (slope, FFT sizes, Doppler axes).
+   - Creates a GUI window with visualization panels and a control sidebar.
+
+2. **Radar Data Loading**
+   - Loads radar frames from `.mat`.
+   - Updates FFT sizes and axes (range, velocity).
+   - Pre-allocates micro-Doppler history.
+   - Updates status in the GUI.
+
+3. **Video Loading**
+   - Reads video frames into memory.
+   - Extracts timestamps and frame rate.
+   - Stores video metadata for synchronized playback.
+
+4. **Playback**
+   - Timer-driven loop (`onTick`) processes frames at ~30 FPS.
+   - Each frame processing includes:
+     - **Clutter Removal** (if enabled).
+     - **Range–Doppler Processing** per channel.
+     - **Null Steering** across antennas.
+     - **CFAR Detection** to identify targets.
+     - **Micro-Doppler Extraction**.
+     - **Target Tracking** with spatial/time gating and history.
+     - **Visualization Update** of all panels.
+     - **Optional Video Frame Injection** aligned to radar timeline.
+
+5. **Shutdown**
+   - Cleans up timers and GUI state on close.
+
+---
+
 ## 📄 License
 
 MIT © 2025 RaSS Team. See `LICENSE` for details.
