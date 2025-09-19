@@ -79,7 +79,7 @@ The script will automatically create the main figure, build all UI components an
 
 ---
 
-## 🎛 Controls & Parameters
+## Controls & Parameters
 
 | Control | Default value | Description |
 |---------|---------------|-------------|
@@ -142,6 +142,6 @@ All helper functions live in the `functions/` folder:
 
 ---
 
-## 📄 License
+## License
 
 MIT © 2025 RaSS Team. See `LICENSE` for details.
