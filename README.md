@@ -7,7 +7,9 @@
 ---
 
 ## 📖 Overview
-`RadarReplayGUI.m` is a self‑contained MATLAB script that opens an interactive GUI for visualising synthetic or real radar data.
+The `RadarReplayGUI` function implements an interactive MATLAB GUI for replaying and analyzing radar data with optional video synchronization.  
+It provides visualization, target tracking, and micro-Doppler analysis in a multi-panel layout.
+
 
 | Feature | Description |
 |---------|-------------|
@@ -20,6 +22,21 @@
 The GUI emulates a 2×3 layout:  
 - **RD** (Range‑Doppler) & **Video** (spanning two panels)  
 - **Angle/Time**, **Micro‑Doppler**, and **Polar** views
+
+---
+
+## Inputs and Requirements
+- **Radar input**: `.mat` file containing `data` with shape `[num_frames × 2 × num_chirps × num_samples]`.
+- **Video input (optional)**: `.mp4`, `.avi`, or `.mov` file for synchronized display.
+- **Dependencies**: Functions in the `functions/` folder:
+  - `apply_cfar`
+  - `calculate_beamforming_weights`
+  - `clutterRemoval`
+  - `extract_targets`
+  - `rangeDopplerProcessing`
+  - `update_tracks`
+  - `setupVisualization`
+  - `updateVisualization`
 
 ---
 
