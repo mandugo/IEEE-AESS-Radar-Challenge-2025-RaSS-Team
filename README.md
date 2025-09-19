@@ -1,5 +1,5 @@
 # IEEE-AESS-Radar-Challenge-2025-RaSS-Team
-**Interactive MATLAB GUI for radar replay, tracking & micro‑Doppler analysis**
+**Interactive MATLAB GUI for radar data replay**
 
 > **Author:** RaSS Team  
 > **Date:** 2025‑09‑15
