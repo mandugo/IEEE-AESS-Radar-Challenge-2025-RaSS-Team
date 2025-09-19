@@ -54,12 +54,6 @@ It performs **peak detection, angle estimation (DOA), and SNR validation** to re
 7. **Repeat**  
  - Continue until `max_targets` are extracted or no peaks remain.  
 
-## Summary
-- The function extracts **up to `max_targets` detections** from the radar map.  
-- Each detection is validated for **region size** and **SNR**.  
-- It estimates **angle of arrival** using **phase difference between antennas**.  
-- After each detection, it suppresses nearby bins to avoid duplicates.  
-
 ---
 
 # `update_tracks`
@@ -93,11 +87,6 @@ It decides whether a new point belongs to an existing track or if it should star
      - If the track length exceeds `max_history`, remove the oldest point (FIFO).  
    - If no suitable track is found:
      - Start a **new track** containing only `new_point`.  
-
-## Summary
-- **Associates** the new point with the nearest valid track (spatially and temporally).  
-- **Starts a new track** if no match is found.  
-- **Limits track length** by keeping only the most recent `max_history` points.  
 
 ---
 
@@ -140,10 +129,5 @@ It operates independently on two radar channels and outputs clutter-suppressed s
 
 3. **Error Handling**
    - Throws an error if `type` is not `'mti'` or `'average'`.  
-
-## Summary
-- Removes stationary clutter using either **MTI differencing** or **mean subtraction**.  
-- Preserves moving target returns while suppressing static background.  
-- Works on both radar channels independently but consistently.  
 
 ---
