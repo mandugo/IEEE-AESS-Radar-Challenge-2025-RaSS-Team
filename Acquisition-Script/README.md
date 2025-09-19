@@ -50,12 +50,12 @@ Each GUI is specific to its acquisition script.
 
 On the **Raspberry Pi** (for acquisition):  
 ```bash
-pip install -r requirements_pi_minimal.txt
+pip install -r pi_requirements.txt
 ```
 
 On the **host PC** (for GUI):  
 ```bash
-pip install -r requirements_host.txt
+pip install -r requirements.txt
 ```
 
 ---
