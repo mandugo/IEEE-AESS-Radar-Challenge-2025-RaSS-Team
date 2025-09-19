@@ -101,7 +101,7 @@ It decides whether a new point belongs to an existing track or if it should star
 
 ---
 
-## Behavior Summary
+## Summary
 - **Associates** the new point with the nearest valid track (spatially and temporally).  
 - **Starts a new track** if no match is found.  
 - **Limits track length** by keeping only the most recent `max_history` points.  
