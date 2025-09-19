@@ -155,4 +155,4 @@ All helper functions live in the `functions/` folder:
 MIT © 2025 RaSS Team. See `LICENSE` for details.
 
 ---
-[![forthebadge](https://forthebadge.com/images/featured/featured-powered-by-electricity.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](https://forthebadge.com)
